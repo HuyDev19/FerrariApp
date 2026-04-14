@@ -1,0 +1,259 @@
+/**
+ * Advanced Animations and Transitions
+ * Scroll-triggered, hover, and page transition effects
+ */
+
+/* Smooth page transitions */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Staggered animations for child elements */
+.stagger-children > * {
+  animation-fill-mode: both;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.5s; }
+
+/* Card hover effects */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+/* Button animations */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(220, 20, 60, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Link animations */
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+/* Tooltip animations */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background: rgba(28, 25, 23, 0.9);
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: fadeInDown 0.2s ease;
+}
+
+/* Loading animation */
+.loader {
+  border: 4px solid rgba(220, 20, 60, 0.1);
+  border-top: 4px solid #dc143c;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Text reveal animation */
+.reveal-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  animation: revealText 0.6s ease forwards;
+}
+
+@keyframes revealText {
+  0% { left: 0; }
+  100% { left: 100%; }
+}
+
+/* Focus animations */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-color: #dc143c;
+  box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* Parallax effect */
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #dc143c, #ff1744);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ff1744, #dc143c);
+}
+
+/* Dark mode scrollbar */
+:root.dark ::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #1f2937, #111827);
+}
+
+/* Mobile animations - reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles - disable animations */
+@media print {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
