@@ -15,7 +15,7 @@ function Footer() {
           <div>
             <h4 className="text-xl font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="/" className="hover:text-ferrari-red transition-colors">HomeTest</a></li>
+              <li><a href="/" className="hover:text-ferrari-red transition-colors">Home</a></li>
               <li><a href="/cars" className="hover:text-ferrari-red transition-colors">Cars</a></li>
               <li><a href="#" className="hover:text-ferrari-red transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-ferrari-red transition-colors">Contact</a></li>
