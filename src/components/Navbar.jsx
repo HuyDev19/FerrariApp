@@ -10,7 +10,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <span className="text-3xl">🏎️</span>
-          <span className="text-xl md:text-2xl font-bold text-ferrari-red">FerrariShowCase</span>
+          <span className="text-xl md:text-2xl font-bold text-ferrari-red">Ferrari</span>
         </Link>
 
         {/* Desktop Navigation */}
